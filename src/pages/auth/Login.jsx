@@ -1,0 +1,60 @@
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router";
+
+export default function Login() {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [error, setError] = useState('');
+    function handleRegister(data) {
+        setError('');
+        if (data.password.length < 6) {
+            setError('Password must be at least 6 characters');
+            return;
+        }
+        console.log(data);
+    }
+    function googleAuth(){
+        console.log('google auth')
+    }
+    return (
+        <section className="hero bg-base-200 md:min-h-[80vh]">
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className="text-center lg:text-left">
+                    <h1 className="text-5xl font-bold">Login now!</h1>
+                    <p className="py-6">
+                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+                        quasi. In deleniti eaque aut repudiandae et a id nisi.
+                    </p>
+                </div>
+                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+                    <div className="card-body">
+                        <form onSubmit={handleSubmit(handleRegister)}>
+                            <fieldset className="fieldset">
+                                <label htmlFor="email" className="label mt-1">Email</label>
+                                <input type="email" id="email" className="input w-full" placeholder="Email" {...register('email', { required: true })} />
+                                {
+                                    errors.email && <span className="text-red-500">Email is required</span>
+                                }
+                                <label htmlFor="password" className="label mt-1">Password</label>
+                                <input type="password" id="password" className="input w-full" placeholder="Password" {...register('password', { required: true })} />
+                                {
+                                    errors.password && <span className="text-red-500">Password is required</span>
+                                }
+                                {error && <p className="text-red-500 mt-2 text-base text-center font-medium">{error}</p>}
+                                <input type="submit" value='Login' className="btn btn-neutral mt-4" />
+                            </fieldset>
+                        </form>
+                        <p className="text-center text-base">OR</p>
+                        <button onClick={googleAuth} className="btn bg-white text-black border-[#e5e5e5]">
+                            {/* Google SVG */}
+                            Continue with Google
+                        </button>
+                        <p className="mt-1">
+                            Don't have an account? <Link to='/register' className="underline">Register</Link>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}

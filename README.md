@@ -68,8 +68,9 @@ This project is designed to help small and medium-sized garment factories:
 
 ## Used Tools & Libraries
 - React Router
-<!-- - Axios
+- React Icons
 - React Hook Form
+<!-- - Axios
 - Framer Motion
 - Recharts
 - SweetAlert2 / React Hot Toast
@@ -101,7 +102,7 @@ src/
 ## 📅 Project Timeline
 - Started: 8 Dec 2025
 - Completed: --
-- Last updated: --
+- Last updated: 12 Dec 2025
 
 ---
 

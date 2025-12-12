@@ -1,0 +1,78 @@
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router";
+
+export default function Register() {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [message, setMessage] = useState('');
+    function handleRegister(data) {
+        setMessage('');
+        if (data.password.length < 6) {
+            setMessage('Password must be at least 6 characters');
+            return;
+        }
+        if (!/[A-Z]/.test(data.password)) {
+            setMessage('Password needs an uppercase letter');
+            return;
+        }
+        if (!/[a-z]/.test(data.password)) {
+            setMessage('Password needs a lowercase letter');
+            return;
+        }
+        console.log(data);
+    }
+    function googleAuth(){
+        console.log('google auth')
+    }
+    return (
+        <section className="hero bg-base-200 md:min-h-[80vh]">
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className="text-center lg:text-left">
+                    <h1 className="text-5xl font-bold">Register now!</h1>
+                    <p className="py-6">
+                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+                        quasi. In deleniti eaque aut repudiandae et a id nisi.
+                    </p>
+                </div>
+                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+                    <div className="card-body">
+                        <form onSubmit={handleSubmit(handleRegister)}>
+                            <fieldset className="fieldset">
+                                <label htmlFor="name" className="label mt-1">Name</label>
+                                <input type="text" id="name" className="input w-full" placeholder="Full Name" {...register('name', { required: true })} />
+                                {
+                                    errors.name && <span className="text-red-500">Name is required</span>
+                                }
+                                <label htmlFor="email" className="label mt-1">Email</label>
+                                <input type="email" id="email" className="input w-full" placeholder="Email" {...register('email', { required: true })} />
+                                {
+                                    errors.email && <span className="text-red-500">Email is required</span>
+                                }
+                                <label htmlFor="photo-url" className="label mt-1">Photo URL</label>
+                                <input type="url" id="photo-url" className="input w-full" placeholder="Photo Link" {...register('photoURL', { required: true })} />
+                                {
+                                    errors.photoURL && <span className="text-red-500">Photo Link is required</span>
+                                }
+                                <label htmlFor="password" className="label mt-1">Password</label>
+                                <input type="password" id="password" className="input w-full" placeholder="Password" {...register('password', { required: true })} />
+                                {
+                                    errors.password && <span className="text-red-500">Password is required</span>
+                                }
+                                {message && <p className="text-red-500 mt-2 text-base text-center font-medium">{message}</p>}
+                                <input type="submit" value='Register' className="btn btn-neutral mt-4" />
+                            </fieldset>
+                        </form>
+                        <p className="text-center text-base">OR</p>
+                        <button onClick={googleAuth} className="btn bg-white text-black border-[#e5e5e5]">
+                            {/* Google SVG */}
+                            Continue with Google
+                        </button>
+                        <p className="mt-1">
+                            Already have an account? <Link to='/login' className="underline">Login</Link>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
