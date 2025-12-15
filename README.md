@@ -64,40 +64,29 @@ This project is designed to help small and medium-sized garment factories:
 - Tailwind CSS + Daisy UI
 - HTML
 - JavaScript
-<!-- - Firebase Authentication -->
+- Firebase Authentication
 
 ## Used Tools & Libraries
 - React Router
 - React Icons
 - React Hook Form
+- SweetAlert2
+- react hot toast
+- axios
 <!-- - Axios
 - Framer Motion
 - Recharts
-- SweetAlert2 / React Hot Toast
 - JWT Authentication -->
 
 ---
 
-<!-- ## 🔐 Authentication
+## 🔐 Authentication
 - Firebase Email/Password Login
-- Google
-- JWT Token Stored in HTTP-Only Cookies
-- Role-based Protected Routes
+- Google Login
+<!-- - JWT Token Stored in HTTP-Only Cookies -->
+<!-- - Role-based Protected Routes -->
 
---- -->
-
-## 📁 Project Structure (Frontend)
-```
-src/
- ├─ components/
- ├─ pages/
- ├─ layouts/
- ├─ hooks/
- ├─ routes/
- ├─ providers/
- ├─ services/
- └─ main.jsx
-```
+---
 
 ## 📅 Project Timeline
 - Started: 8 Dec 2025

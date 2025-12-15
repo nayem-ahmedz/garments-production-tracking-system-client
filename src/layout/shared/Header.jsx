@@ -1,6 +1,9 @@
 import { Link, NavLink } from "react-router";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 export default function Header() {
+    const { currentUser, loading, logoutUser } = useAuth();
     const navLinks = <>
         <li> <NavLink to='/'>Home</NavLink> </li>
         <li> <NavLink to='/all-products'>All Products</NavLink> </li>
@@ -8,6 +11,35 @@ export default function Header() {
         <li> <NavLink to='/contact'>Contact</NavLink> </li>
         <li> <NavLink to='/dashboard'>Dashboard</NavLink> </li>
     </>;
+    const handleLogout = () => {
+        Swal.fire({
+            title: "Are you sure to Logout?",
+            text: "You have to login again to get access!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, continue!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logoutUser()
+                    .then(() => {
+                        Swal.fire({
+                            title: "Logged Out!",
+                            text: "You have successfully logged out.",
+                            icon: "success"
+                        });
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            title: "OPPS!",
+                            text: "Error loggin out.",
+                            icon: "error"
+                        });
+                    });
+            }
+        });
+    }
     return (
         <header className="bg-base-100 shadow-sm">
             <nav className="navbar containerr">
@@ -33,8 +65,27 @@ export default function Header() {
                         }
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <Link to='/login' className="btn">Login</Link>
+                <div className="navbar-end gap-3">
+                    {
+                        loading ? <span className="loading loading-dots loading-xl mr-5"></span> : currentUser ?
+                            <>
+                                <div className="dropdown dropdown-end">
+                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                        <div className="w-10 rounded-full">
+                                            <img src={currentUser.photoURL} alt={`image of ${currentUser.displayName}`} />
+                                        </div>
+                                    </div>
+                                    <ul
+                                        tabIndex="-1"
+                                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                        <li> <Link to='/add-food' className='text-sm'>Add Food</Link> </li>
+                                        <li> <Link to='/my-foods' className='text-sm'>Manage My Foods</Link> </li>
+                                        <li> <Link to='/food-request' className='text-sm'>My Food Requests</Link> </li>
+                                    </ul>
+                                </div>
+                                <button className='btn btn-error btn-outline hover:text-white' onClick={handleLogout}>Logout</button>
+                            </> : <Link to='/auth/login' className="btn btn-primary text-base">Login</Link>
+                    }
                 </div>
             </nav>
         </header>
