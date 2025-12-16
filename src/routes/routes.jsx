@@ -8,6 +8,7 @@ const Dashboard = lazy(() => import('../layout/dashboard/Dashboard'));
 const NoPage = lazy(() => import('../pages/NoPage'));
 const Login = lazy(() => import('../pages/auth/Login'));
 const Register = lazy(() => import('../pages/auth/Register'));
+const ManageUsers = lazy(() => import('../pages/admin/users/ManageUsers'));
 
 export const router = createBrowserRouter([
     {
@@ -28,6 +29,7 @@ export const router = createBrowserRouter([
                 path: '/dashboard',
                 element: <PrivateRoute> <Dashboard /> </PrivateRoute>,
                 children: [
+                    { path: 'manage-users', element: <ManageUsers /> },
                     { path: '*', element: <NoPage /> }
                 ]
             },

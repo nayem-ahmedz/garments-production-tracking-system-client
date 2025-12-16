@@ -73,6 +73,7 @@ This project is designed to help small and medium-sized garment factories:
 - SweetAlert2
 - react hot toast
 - axios
+- tanstack query
 <!-- - Axios
 - Framer Motion
 - Recharts

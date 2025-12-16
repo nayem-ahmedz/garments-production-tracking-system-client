@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
-import useAxios from "../../hooks/useAxios";
+import useAxios from "../../hooks/useAxiosSecure";
 
 export default function GoogleProvider() {
     const { continueWithGoogle } = useAuth();
@@ -18,10 +18,11 @@ export default function GoogleProvider() {
                 photoURL: user.photoURL,
                 role: 'buyer'
             };
-            axiosSecure.post('/users', userInfo)
-              .then(res => console.log(res.data));
+            axiosSecure.post('/api/users', userInfo)
+              .then(res => console.log(res.data))
+              .catch(err => console.log(err));
             toast.success('Succesfully logged in using Google');
-            navigate('/dashboard');
+            navigate('/');
           })
           .catch(error => {
             console.log(error);

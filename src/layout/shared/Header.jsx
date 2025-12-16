@@ -78,9 +78,9 @@ export default function Header() {
                                     <ul
                                         tabIndex="-1"
                                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                                        <li> <Link to='/add-food' className='text-sm'>Add Food</Link> </li>
-                                        <li> <Link to='/my-foods' className='text-sm'>Manage My Foods</Link> </li>
-                                        <li> <Link to='/food-request' className='text-sm'>My Food Requests</Link> </li>
+                                        <li> <Link to='/all-product' className='text-sm'>All Product</Link> </li>
+                                        <li> <Link to='/all-orders' className='text-sm'>Manage My Orders</Link> </li>
+                                        <li> <Link to='/my-request' className='text-sm'>My Requests</Link> </li>
                                     </ul>
                                 </div>
                                 <button className='btn btn-error btn-outline hover:text-white' onClick={handleLogout}>Logout</button>

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import GoogleProvider from "./GoogleProvider";
 import toast from "react-hot-toast";
-import useAxios from "../../hooks/useAxios";
+import useAxios from "../../hooks/useAxiosSecure";
 
 export default function Register() {
     const { register, handleSubmit, formState: { errors } } = useForm();
