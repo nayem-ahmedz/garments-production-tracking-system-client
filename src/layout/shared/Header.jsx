@@ -7,9 +7,13 @@ export default function Header() {
     const navLinks = <>
         <li> <NavLink to='/'>Home</NavLink> </li>
         <li> <NavLink to='/all-products'>All Products</NavLink> </li>
-        <li> <NavLink to='/about'>About us</NavLink> </li>
-        <li> <NavLink to='/contact'>Contact</NavLink> </li>
-        <li> <NavLink to='/dashboard'>Dashboard</NavLink> </li>
+        {
+            !currentUser ? <>
+                <li> <NavLink to='/about'>About us</NavLink> </li>
+                <li> <NavLink to='/contact'>Contact</NavLink> </li>
+                <li> <NavLink to='/auth/register'>Register</NavLink> </li>
+            </> : <li> <NavLink to='/dashboard'>Dashboard</NavLink> </li>
+        }
     </>;
     const handleLogout = () => {
         Swal.fire({
@@ -69,19 +73,10 @@ export default function Header() {
                     {
                         loading ? <span className="loading loading-dots loading-xl mr-5"></span> : currentUser ?
                             <>
-                                <div className="dropdown dropdown-end">
-                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                                        <div className="w-10 rounded-full">
-                                            <img src={currentUser.photoURL} alt={`image of ${currentUser.displayName}`} />
-                                        </div>
+                                <div className="avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img src={currentUser.photoURL} alt={`image of ${currentUser.displayName}`} />
                                     </div>
-                                    <ul
-                                        tabIndex="-1"
-                                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                                        <li> <Link to='/all-product' className='text-sm'>All Product</Link> </li>
-                                        <li> <Link to='/all-orders' className='text-sm'>Manage My Orders</Link> </li>
-                                        <li> <Link to='/my-request' className='text-sm'>My Requests</Link> </li>
-                                    </ul>
                                 </div>
                                 <button className='btn btn-error btn-outline hover:text-white' onClick={handleLogout}>Logout</button>
                             </> : <Link to='/auth/login' className="btn btn-primary text-base">Login</Link>
@@ -91,3 +86,18 @@ export default function Header() {
         </header>
     );
 }
+
+{/* <div className="dropdown dropdown-end">
+    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+
+        </div>
+    </div>
+    <ul
+        tabIndex="-1"
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <li> <Link to='/all-product' className='text-sm'>All Product</Link> </li>
+        <li> <Link to='/all-orders' className='text-sm'>Manage My Orders</Link> </li>
+        <li> <Link to='/my-request' className='text-sm'>My Requests</Link> </li>
+    </ul>
+</div> */}

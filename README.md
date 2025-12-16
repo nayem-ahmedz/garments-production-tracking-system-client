@@ -74,10 +74,11 @@ This project is designed to help small and medium-sized garment factories:
 - react hot toast
 - axios
 - tanstack query
+- Firebase JWT Authentication
 <!-- - Axios
 - Framer Motion
 - Recharts
-- JWT Authentication -->
+ -->
 
 ---
 
@@ -92,7 +93,7 @@ This project is designed to help small and medium-sized garment factories:
 ## 📅 Project Timeline
 - Started: 8 Dec 2025
 - Completed: --
-- Last updated: 12 Dec 2025
+- Last updated: 17 Dec 2025
 
 ---
 
