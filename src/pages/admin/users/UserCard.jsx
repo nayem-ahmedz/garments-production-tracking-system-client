@@ -1,20 +1,25 @@
-export default function UserCard({ user }) {
+import { FaEdit } from "react-icons/fa";
+
+export default function UserCard({ user, serial, showModal }) {
     return (
-        <li className="list-row">
-            <div><img className="size-10 rounded-box" src={user.photoURL} /></div>
-            <div>
-                <div>{user.name}</div>
-                <div className="text-xs font-semibold opacity-60">{user.role}</div>
-            </div>
-            <div className="flex items-center">
-                <p>Status : {user.status}</p>
-            </div>
-            <button className="btn btn-square btn-ghost">
-                <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M6 3L20 12 6 21 6 3z"></path></g></svg>
-            </button>
-            <button className="btn btn-square btn-ghost">
-                <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
-            </button>
-        </li>
+        <tr>
+            <th>{serial + 1}</th>
+            <td className="flex gap-2 items-center text-xl">
+                <div className="avatar">
+                    <div className="w-10 rounded-box">
+                        <img src={user.photoURL} alt={user.name} />
+                    </div>
+                </div>
+                {user.name}
+            </td>
+            <td>{user.email}</td>
+            <td>{user.role}</td>
+            <td className={`${user.status === 'active' ? 'text-green-500' : 'text-red-500'}`}>{user.status}</td>
+            <td>
+                <button className="btn btn-square btn-ghost" onClick={() => showModal(user)}>
+                    <FaEdit />
+                </button>
+            </td>
+        </tr>
     );
 }

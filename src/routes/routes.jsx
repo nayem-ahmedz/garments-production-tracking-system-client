@@ -3,6 +3,7 @@ import { lazy } from "react";
 import Root from "../layout/public/Root";
 import PrivateRoute from "./PrivateRoutes";
 import AuthLayout from "../pages/auth/AuthLayout";
+import AdminRoute from "./AdminRoutes";
 const Home = lazy(() => import('../pages/home/Home'));
 const Dashboard = lazy(() => import('../layout/dashboard/Dashboard'));
 const NoPage = lazy(() => import('../pages/NoPage'));
@@ -29,7 +30,7 @@ export const router = createBrowserRouter([
                 path: '/dashboard',
                 element: <PrivateRoute> <Dashboard /> </PrivateRoute>,
                 children: [
-                    { path: 'manage-users', element: <ManageUsers /> },
+                    { path: 'manage-users', element: <AdminRoute><ManageUsers /></AdminRoute> },
                     { path: '*', element: <NoPage /> }
                 ]
             },
