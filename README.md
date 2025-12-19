@@ -75,8 +75,9 @@ This project is designed to help small and medium-sized garment factories:
 - axios
 - tanstack query
 - Firebase JWT Authentication
-<!-- - Axios
 - Framer Motion
+- swiper
+<!-- - Axios
 - Recharts
  -->
 

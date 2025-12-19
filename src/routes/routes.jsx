@@ -10,6 +10,7 @@ const NoPage = lazy(() => import('../pages/NoPage'));
 const Login = lazy(() => import('../pages/auth/Login'));
 const Register = lazy(() => import('../pages/auth/Register'));
 const ManageUsers = lazy(() => import('../pages/admin/users/ManageUsers'));
+const AllProducts = lazy(() => import('../pages/products/AllProducts'));
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +27,7 @@ export const router = createBrowserRouter([
                     { path: 'register', element: <Register /> }
                 ]
             },
+            { path: '/all-products', element: <AllProducts /> },
             {
                 path: '/dashboard',
                 element: <PrivateRoute> <Dashboard /> </PrivateRoute>,
