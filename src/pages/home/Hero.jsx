@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 export default function Hero() {
     return (
         <section
-            className="hero min-h-screen"
+            className="hero min-h-[70vh]"
             style={{ backgroundImage: "url(https://images.pexels.com/photos/31212936/pexels-photo-31212936.jpeg)",}}
         >
             <div className="hero-overlay"></div>
