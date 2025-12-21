@@ -7,7 +7,7 @@ export default function Hero() {
             style={{ backgroundImage: "url(https://images.pexels.com/photos/31212936/pexels-photo-31212936.jpeg)",}}
         >
             <div className="hero-overlay"></div>
-            <div className="hero-content w-full text-neutral-content">
+            <div className="hero-content w-full text-neutral-content py-10">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ export default function Hero() {
                         transition={{ delay: 0.2 }}
                         className="mb-6 text-4xl font-bold"
                     >
-                        Smart Garments Management System
+                        Smart Garments
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}

@@ -1,7 +1,18 @@
 import { motion } from "motion/react";
 import Card from "../../components/products/Card";
+import useAxios from "../../hooks/useAxios";
+import { useQuery } from "@tanstack/react-query";
 
 export default function OurProducts() {
+    const axios = useAxios();
+    // data fetch using tanstack query
+    const { data: products = [] } = useQuery({
+        queryKey: ['products', 'featured-products'],
+        queryFn: async () => {
+            const response = await axios.get('/api/products?featured=true&limit=6');
+            return response.data.products;
+        }
+    });
     return (
         <section className="p-4 py-10">
             {/* Section header */}
@@ -21,12 +32,9 @@ export default function OurProducts() {
                 </p>
             </motion.div>
             <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                {
+                    products.map(product => <Card key={product._id} product={product} />)
+                }
             </section>
         </section>
     );

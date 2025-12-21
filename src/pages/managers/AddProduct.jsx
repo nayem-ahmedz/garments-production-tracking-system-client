@@ -127,7 +127,7 @@ export default function AddProduct() {
                                 <label htmlFor="description" className="label">Product Description</label>
                                 <textarea
                                     id="description"
-                                    className="input w-full h-20"
+                                    className="input w-full h-20 text-wrap"
                                     placeholder="Product Description"
                                     {...register('description', { required: true })}
                                 ></textarea>
@@ -194,7 +194,7 @@ export default function AddProduct() {
                                     {...register('paymentOption', { required: true })}
                                 >
                                     <option value='' disabled>Choose Payment option</option>
-                                    <option value='Cash On Delivery'>Cash on Delivery</option>
+                                    <option value='Cash on Delivery'>Cash on Delivery</option>
                                     <option value='Pay First'>Pay First</option>
                                 </select>
                                 {errors.paymentOption && <span className="text-red-500">Select payment option</span>}
