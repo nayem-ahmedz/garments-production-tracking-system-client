@@ -31,18 +31,18 @@ export const router = createBrowserRouter([
                 ]
             },
             { path: '/all-products', element: <AllProducts /> },
-            {
-                path: '/dashboard',
-                element: <PrivateRoute> <Dashboard /> </PrivateRoute>,
-                children: [
-                    { index: true, element: <DashboardHome />},
-                    { path: 'home', element: <DashboardHome />},
-                    { path: 'manage-users', element: <AdminRoute><ManageUsers /></AdminRoute> },
-                    { path: 'add-product', element: <ManagerRoute> <AddProduct /> </ManagerRoute> },
-                    { path: '*', element: <NoPage /> }
-                ]
-            },
             { path: '*', element: <NoPage /> }
         ]
-    }
+    },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute> <Dashboard /> </PrivateRoute>,
+        children: [
+            { index: true, element: <DashboardHome /> },
+            { path: 'home', element: <DashboardHome /> },
+            { path: 'manage-users', element: <AdminRoute><ManageUsers /></AdminRoute> },
+            { path: 'add-product', element: <ManagerRoute> <AddProduct /> </ManagerRoute> },
+            { path: '*', element: <NoPage /> }
+        ]
+    },
 ]);
