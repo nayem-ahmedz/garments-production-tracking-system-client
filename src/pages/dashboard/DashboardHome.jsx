@@ -7,7 +7,6 @@ const Loading = lazy(() => import('../../components/utils/Loading'));
 
 export default function DashboardHome(){
     const { role, isLoading } = useRole();
-    console.log(role)
     if(isLoading) return <Loading />;
     if(role === 'admin'){
         return <AdminDashboard />

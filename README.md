@@ -2,11 +2,11 @@
 
 A modern, responsive, and role-based production management system built with **React Js**. This platform allows buyers to place garment orders, managers to manage products & approvals, and admins to control the entire system with analytics.
 
-<!-- ## 🔗 Live Website
-👉 [Frontend Live site](https://bite-sharee.vercel.app/) -->
+## 🔗 Live Website
+👉 [Frontend Live site](https://bite-sharee.vercel.app/)
 
-<!-- ## 📸 Project Preview -->
-<!-- ![Home](./screenshots/home.png) -->
+## Project Preview
+![Home](./public/media/smart-garments-homepage.webp)
 <!-- ![Dashboard](./screenshots/dashboard.png) -->
 
 ## 🎯 Project Purpose
@@ -26,7 +26,7 @@ This project is designed to help small and medium-sized garment factories:
 
 ## 🚀 Key Features
 
-### ✅ Public Features
+### Public Features
 - Modern animated Home Page (Framer Motion)
 - All Products Page
 - Product Search & Filter
@@ -35,13 +35,13 @@ This project is designed to help small and medium-sized garment factories:
 - Dark / Light Theme
 - Fully Responsive UI
 
-### ✅ Buyer Dashboard
+### Buyer Dashboard
 - My Orders
 - Track Order Timeline
 - Cancel Pending Orders
 - View Profile & Suspend Feedback
 
-### ✅ Manager Dashboard
+### Manager Dashboard
 - Add Product
 - Manage Own Products
 - Pending Orders
@@ -49,7 +49,7 @@ This project is designed to help small and medium-sized garment factories:
 - Add Tracking Info
 - Profile Management
 
-### ✅ Admin Dashboard
+### Admin Dashboard
 - Manage Users (Role Update / Suspend)
 - All Products (Update, Delete, Show on Home)
 - All Orders (Filter & Status Control)
@@ -86,15 +86,15 @@ This project is designed to help small and medium-sized garment factories:
 ## 🔐 Authentication
 - Firebase Email/Password Login
 - Google Login
+- Role-based Protected Routes
 <!-- - JWT Token Stored in HTTP-Only Cookies -->
-<!-- - Role-based Protected Routes -->
 
 ---
 
 ## 📅 Project Timeline
 - Started: 8 Dec 2025
-- Completed: --
-- Last updated: 17 Dec 2025
+- Completed: 23 Dec 2025
+- Last updated: 23 Dec 2025
 
 ---
 
@@ -130,6 +130,7 @@ VITE_storageBucket=your_storage_bucket
 VITE_messagingSenderId=your_messaging_id
 VITE_appId=your_app_id
 VITE_SERVER_URL=https://your-backend-url.com
+VITE_IMGBB_API_KEY=your_imagebb_api_key
 ```
 
 ---
@@ -137,7 +138,6 @@ VITE_SERVER_URL=https://your-backend-url.com
 ## ✅ Deployment Checklist
 - Firebase domain added
 - React Router reload issue fixed
-- JWT implemented with cookies
 - All private routes protected
 
 ---
@@ -145,11 +145,10 @@ VITE_SERVER_URL=https://your-backend-url.com
 ## 👨‍💻 Developer Info
 
 Name: Nayem Ahmed  
-Role: Frontend Developer (MERN Stack)  
+Role: Fullstack Web Developer (MERN Stack)  
 Portfolio: https://nayem-ahmed.vercel.app  
 GitHub: https://github.com/nayem-ahmedz  
 LinkedIn: https://linkedin.com/in/nayem-ahmedz  
 
 ---
-
 Feel free to contact me for any queries or collaboration.
