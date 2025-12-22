@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function Card({product}) {
     const { name, images, price, description } = product;
     return (
@@ -12,7 +14,7 @@ export default function Card({product}) {
                 </h2>
                 <p className="text-base">{description.slice(0,130)}...</p>
                 <div className="card-actions justify-between mt-2">
-                    <div className="btn btn-primary btn-outline">View Details</div>
+                    <Link to={`/all-products/${product._id}`} className="btn btn-primary btn-outline">View Details</Link>
                 </div>
             </div>
         </div>

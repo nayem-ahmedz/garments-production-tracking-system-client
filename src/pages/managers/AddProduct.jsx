@@ -85,7 +85,7 @@ export default function AddProduct() {
         }
     }
     return (
-        <div className="hero-content mx-auto mt-6 md:mt-8">
+        <section className="hero-content mx-auto mt-6 md:mt-8">
             <title>Add Product</title>
             <div className="card bg-base-100 w-full shadow-2xl">
                 <div className="card-body">
@@ -240,6 +240,6 @@ export default function AddProduct() {
                     </form>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }

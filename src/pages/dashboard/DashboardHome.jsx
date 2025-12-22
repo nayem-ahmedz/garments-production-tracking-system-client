@@ -2,7 +2,7 @@ import { lazy } from "react";
 import useRole from "../../hooks/useRole";
 const AdminDashboard = lazy(() => import('./AdminDashboard'));
 const ManagerDashboard = lazy(() => import('./ManagerDashboard'));
-const BuyerDashboard = lazy(() => import('./BuyerDashboard'));
+const BuyerDashboard = lazy(() => import('./buyer/BuyerDashboard'));
 const Loading = lazy(() => import('../../components/utils/Loading'));
 
 export default function DashboardHome(){

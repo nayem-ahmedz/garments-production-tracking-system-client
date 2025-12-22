@@ -4,13 +4,14 @@ import useAxiosSecure from "./useAxiosSecure";
 
 export default function useRole(){
     const axiosSecure = useAxiosSecure();
-    const { currentUser } = useAuth();
-    const { data: role = 'buyer', refetch, isLoading } = useQuery({
+    const { currentUser, loading } = useAuth();
+    const { data: role = 'buyer', isLoading, isFetching } = useQuery({
         queryKey: ['user-role', currentUser?.email],
+        enabled: !!currentUser?.email && !loading,
         queryFn: async () => {
             const response = await axiosSecure.get(`/api/users/role?email=${currentUser?.email}`);
             return response.data.role;
         }
     });
-    return { role, isLoading };
+    return { role, isLoading: isLoading || loading || isFetching };
 }
