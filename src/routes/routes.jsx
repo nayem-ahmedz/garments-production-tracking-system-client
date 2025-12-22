@@ -14,6 +14,8 @@ const DashboardHome = lazy(() => import('../pages/dashboard/DashboardHome'));
 const ManageUsers = lazy(() => import('../pages/admin/users/ManageUsers'));
 const AllProducts = lazy(() => import('../pages/products/AllProducts'));
 const AddProduct = lazy(() => import('../pages/managers/AddProduct'));
+const ManageProducts = lazy(() => import('../pages/managers/ManageProducts'));
+const AdminAllProducts = lazy(() => import('../pages/admin/products/AllProducts'));
 
 export const router = createBrowserRouter([
     {
@@ -42,6 +44,8 @@ export const router = createBrowserRouter([
             { path: 'home', element: <DashboardHome /> },
             { path: 'manage-users', element: <AdminRoute><ManageUsers /></AdminRoute> },
             { path: 'add-product', element: <ManagerRoute> <AddProduct /> </ManagerRoute> },
+            { path: 'manage-products', element: <ManagerRoute> <ManageProducts /> </ManagerRoute> },
+            { path: 'all-products', element: <AdminRoute> <AdminAllProducts /> </AdminRoute> },
             { path: '*', element: <NoPage /> }
         ]
     },
