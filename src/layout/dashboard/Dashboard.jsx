@@ -1,8 +1,12 @@
 import { Link, Outlet } from "react-router";
 import Sidebar from "./Sidebar";
 import { GiHamburgerMenu } from "react-icons/gi";
+import useRole from "../../hooks/useRole";
+import Loading from "../../components/utils/Loading";
 
 export default function Dashboard() {
+    const { role, isLoading } = useRole();
+    if(isLoading) return <section className="min-h-screen w-full flex justify-center items-center"><Loading /></section>
     return (
         <section className="drawer lg:drawer-open min-h-screen containerr2">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -24,7 +28,7 @@ export default function Dashboard() {
                     <Outlet />
                 </section>
             </section>
-            <Sidebar />
+            <Sidebar role={role} />
         </section>
     );
 }

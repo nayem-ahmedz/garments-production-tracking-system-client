@@ -13,7 +13,6 @@ export default function MyOrders() {
             return response.data.orders;
         }
     });
-    console.log(orders)
     return (
         <section className="p-4">
             <h2 className="text-2xl md:text-3xl my-4 text-center">My Orders</h2>

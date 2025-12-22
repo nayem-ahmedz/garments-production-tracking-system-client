@@ -2,7 +2,6 @@ import { Link } from "react-router";
 import { RiDashboardFill } from "react-icons/ri";
 import { FaUsers } from "react-icons/fa";
 import { GiClothes } from "react-icons/gi";
-import useRole from "../../hooks/useRole";
 import useAuth from "../../hooks/useAuth";
 import { IoCart } from "react-icons/io5";
 import { FaMagnifyingGlassLocation } from "react-icons/fa6";
@@ -11,10 +10,8 @@ import { BsSendExclamationFill } from "react-icons/bs";
 import { BsSendCheckFill } from "react-icons/bs";
 import { AiFillProduct } from "react-icons/ai";
 import { FaUser } from "react-icons/fa6";
-import Loading from "../../components/utils/Loading";
 
-export default function Sidebar() {
-    const { role, isLoading } = useRole();
+export default function Sidebar({role}) {
     const { currentUser } = useAuth();
     const navLinks = [
         { id: 1, text: 'Dashboard', link: '/dashboard/home', icon: RiDashboardFill },
@@ -56,7 +53,7 @@ export default function Sidebar() {
                         </div>
                     </li>
                     {
-                        isLoading ? <Loading /> : filteredLinks.map(link => <li key={link.id}>
+                        filteredLinks.map(link => <li key={link.id}>
                             <Link to={link.link} className="is-drawer-close:tooltip is-drawer-close:tooltip-right text-base" data-tip={link.text}>
                                 <link.icon className="text-xl md:text-2xl" />
                                 <span className="is-drawer-close:hidden"> {link.text} </span>

@@ -6,7 +6,7 @@ export default function PrivateRoute({children}){
     const { currentUser, loading } = useAuth();
     const location = useLocation();
     if(loading){
-        return <Loading />;
+        return <section className="min-h-screen w-full flex justify-center items-center"><Loading /></section>;
     }
     if(!currentUser){
         return <Navigate to='/auth/login' state={location.pathname} />

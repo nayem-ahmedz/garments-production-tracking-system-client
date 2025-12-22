@@ -14,7 +14,6 @@ export default function MyProfile() {
         if (currentUser?.email) {
             axiosSecure.get(`/api/users/profile?email=${currentUser.email}`)
                 .then(res => {
-                    console.log(res.data);
                     setProfile(res.data.user);
                     setLoading(false);
                 })
@@ -51,7 +50,6 @@ export default function MyProfile() {
             }
         });
     }
-
     if (loading) return <Loading />;
     return (
         <div className="hero bg-base-200 min-h-screen">
@@ -63,8 +61,8 @@ export default function MyProfile() {
                         className="max-w-sm rounded-lg shadow-2xl mx-auto"
                     />
                 </div>
-                <div className="w-full">
-                    <div className="bg-base-100 shadow-md p-6 rounded-lg space-y-2">
+                <div className="w-full bg-base-100">
+                    <div className=" shadow-md p-6 rounded-lg space-y-2">
                         <p><strong>Name:</strong> {profile.name}</p>
                         <p><strong>Email:</strong> {profile.email}</p>
                         <p><strong>Role:</strong> {profile.role}</p>

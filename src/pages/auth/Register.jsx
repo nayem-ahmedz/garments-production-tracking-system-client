@@ -40,10 +40,11 @@ export default function Register() {
                 updateUserProfile(userCred.user, { displayName: data.name, photoURL: data.photoURL })
                     .then(() => {
                         axiosSecure.post('/api/users', userData)
-                          .then(res => console.log(res.data));
-                        setLoading(false);
-                        toast.success('Succefully Created Account');
-                        navigate('/dashboard');
+                            .then(res => {
+                                setLoading(false);
+                                toast.success('Succefully Created Account');
+                                navigate('/');
+                            });
                     })
                     .catch(error => {
                         console.log(error);
@@ -51,7 +52,7 @@ export default function Register() {
             })
             .catch(error => {
                 setLoading(false);
-                if(error.code === 'auth/email-already-in-use'){
+                if (error.code === 'auth/email-already-in-use') {
                     setMessage('Already Registerred, please login!');
                 }
             });

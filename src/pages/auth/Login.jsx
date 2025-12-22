@@ -18,7 +18,6 @@ export default function Login() {
         }
         loginUser(data.email, data.password)
           .then(userCred => {
-            console.log(userCred.user);
             toast.success('Succesfully logged in');
             navigate('/dashboard');
           })
