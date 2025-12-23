@@ -29,6 +29,7 @@ export default function Login() {
     }
     return (
         <div className="hero-content flex-col lg:flex-row-reverse">
+            <title>Login | Smart Garments</title>
             <div className="text-center lg:text-left">
                 <h1 className="text-5xl font-bold">Login now!</h1>
                 <p className="py-6">

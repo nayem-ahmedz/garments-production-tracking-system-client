@@ -9,6 +9,7 @@ export default function Dashboard() {
     if(isLoading) return <section className="min-h-screen w-full flex justify-center items-center"><Loading /></section>
     return (
         <section className="drawer lg:drawer-open min-h-screen containerr2">
+            <title>Dashboard | Smart Garments</title>
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
             <section className="drawer-content">
                 {/* Navbar */}
@@ -17,7 +18,7 @@ export default function Dashboard() {
                         {/* Sidebar toggle icon */}
                         <GiHamburgerMenu className="text-2xl"/>
                     </label>
-                    <div className="px-2 grow">Navbar Title</div>
+                    <div className="px-2 grow">Dashboard</div>
                     <div>
                         <Link to='/' className="btn btn-secondary btn-outline">Exit Dashboard</Link>
                     </div>

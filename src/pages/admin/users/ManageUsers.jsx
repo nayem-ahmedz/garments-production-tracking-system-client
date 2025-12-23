@@ -72,6 +72,7 @@ export default function ManageUsers() {
     console.log(users);
     return (
         <section className="p-4">
+            <title>Manage Users | Dashboard</title>
             <h2>Manage Users : {users.length}</h2>
             <section className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
                 <table className="table">

@@ -28,6 +28,7 @@ export default function ProductDetails() {
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
+            <title>Product Details</title>
             <div className="hero-content flex-col lg:flex-row">
                 <img src={product.images[0]} className="max-w-sm rounded-lg shadow-2xl" />
                 <div>

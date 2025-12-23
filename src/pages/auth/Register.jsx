@@ -59,6 +59,7 @@ export default function Register() {
     }
     return (
         <div className="hero-content flex-col lg:flex-row-reverse">
+            <title>Register | Smart Garments</title>
             <div className="text-center lg:text-left">
                 <h1 className="text-5xl font-bold">Register now!</h1>
                 <p className="py-6">

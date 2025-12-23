@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
-import useAxios from "../../hooks/useAxiosSecure";
-import uploadToImageBB from "../../components/utils/uploadToImageBB";
+import uploadToImageBB from "../../../components/utils/uploadToImageBB";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 export default function AddProduct() {
     const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm();
@@ -12,7 +12,7 @@ export default function AddProduct() {
     const [selectedImages, setSelectedImages] = useState([]);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
-    const axiosSecure = useAxios();
+    const axiosSecure = useAxiosSecure();
 
     // Handle image selection
     const handleImageChange = (e) => {
@@ -86,7 +86,7 @@ export default function AddProduct() {
     }
     return (
         <section className="hero-content mx-auto mt-6 md:mt-8">
-            <title>Add Product</title>
+            <title>Add Product | Dashboard</title>
             <div className="card bg-base-100 w-full shadow-2xl">
                 <div className="card-body">
                     <h2 className="text-2xl md:text-3xl my-2 text-right">Add a Product</h2>

@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Link } from "react-router";
 
 export default function CardFull({product}) {
     const { name, images, price, category, availableQuantity } = product;
@@ -21,7 +22,7 @@ export default function CardFull({product}) {
                 <h3 className="text-xl">Price : ${price}</h3>
                 <p className="text-base">Avaible Quantity : {availableQuantity}</p>
                 <div className="card-actions justify-between mt-2">
-                    <div className="btn btn-primary btn-outline">View Details</div>
+                    <Link to={`/all-products/${product._id}`} className="btn btn-primary btn-outline">View Details</Link>
                 </div>
             </div>
         </motion.div>

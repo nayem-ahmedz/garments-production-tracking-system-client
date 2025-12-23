@@ -15,6 +15,7 @@ export default function MyOrders() {
     });
     return (
         <section className="p-4">
+            <title>My Orders | Dashboard</title>
             <h2 className="text-2xl md:text-3xl my-4 text-center">My Orders</h2>
             <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
                 <table className="table">

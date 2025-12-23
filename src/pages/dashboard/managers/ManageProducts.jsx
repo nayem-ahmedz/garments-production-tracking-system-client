@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../hooks/useAuth";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 export default function ManageProducts() {
     const { currentUser } = useAuth();
@@ -9,12 +9,13 @@ export default function ManageProducts() {
     const { data: products = [] } = useQuery({
         queryKey: ['products', currentUser.email],
         queryFn: async () => {
-            const response = await axiosSecure.get('/api/products/my?limit=6');
+            const response = await axiosSecure.get('/api/products/my');
             return response.data.products;
         }
     });
     return (
         <section className="p-4">
+            <title>Manage Products | Dashboard</title>
             <h2 className="text-2xl md:text-3xl my-4 text-center">All Products</h2>
             <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
                 <table className="table">

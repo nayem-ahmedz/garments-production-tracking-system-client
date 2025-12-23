@@ -16,6 +16,7 @@ export default function AllProducts() {
     console.log(products);
     return (
         <section className="p-4">
+            <title>All Products | Dashboard</title>
             <h2 className="text-2xl md:text-3xl my-4 text-center">All Products</h2>
             <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
                 <table className="table">

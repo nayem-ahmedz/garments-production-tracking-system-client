@@ -52,7 +52,8 @@ export default function MyProfile() {
     }
     if (loading) return <Loading />;
     return (
-        <div className="hero bg-base-200 min-h-screen">
+        <section className="hero bg-base-200 min-h-screen">
+            <title>My Profile | Dashboard</title>
             <div className="hero-content flex-col lg:flex-row gap-8">
                 <div>
                     <img
@@ -75,6 +76,6 @@ export default function MyProfile() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }

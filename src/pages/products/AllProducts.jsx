@@ -15,6 +15,7 @@ export default function AllProducts(){
     });
     return(
         <section className="p-4 py-10">
+            <title>All Products</title>
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
