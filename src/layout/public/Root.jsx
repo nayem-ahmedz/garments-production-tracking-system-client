@@ -2,10 +2,12 @@ import { Outlet } from "react-router";
 import Header from "../shared/Header";
 import Footer from "../shared/Footer";
 import { Toaster } from "react-hot-toast";
+import ScrollToTop from "../../components/utils/ScrollToTop";
 
 export default function Root() {
     return (
         <>
+            <ScrollToTop />
             <Header />
             <main className="containerr">
                 <Outlet />

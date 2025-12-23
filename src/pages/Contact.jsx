@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import {
     FaEnvelope,
     FaPhoneAlt,
@@ -6,6 +7,11 @@ import {
 } from "react-icons/fa";
 
 export default function ContactUs() {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        toast.success('feature is coming soon...');
+        e.target.reset();
+    }
     return (
         <section className="min-h-screen bg-base-100 py-10 px-4">
             <title>Contact Us | Smart Garments</title>
@@ -47,7 +53,7 @@ export default function ContactUs() {
                                     <div>
                                         <h3 className="text-xl font-semibold">Phone</h3>
                                         <p className="text-base-content/70">
-                                            +880 1XXX-XXXXXX
+                                            +880 0123456789
                                         </p>
                                     </div>
                                 </div>
@@ -76,7 +82,7 @@ export default function ContactUs() {
                                 Send Us a Message
                             </h2>
 
-                            <form className="space-y-4">
+                            <form className="space-y-4" onSubmit={handleSubmit}>
                                 <div>
                                     <label className="label">
                                         <span className="label-text">Full Name</span>

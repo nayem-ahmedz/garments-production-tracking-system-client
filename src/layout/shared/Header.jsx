@@ -60,7 +60,7 @@ export default function Header() {
                             }
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost text-xl">SmartGarments</Link>
+                    <Link to='/' className="btn btn-ghost text-xl">Smart<span className="text-indigo-400">Garments</span></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Link } from "react-router";
 
 export default function Hero() {
     return (
@@ -52,8 +53,8 @@ export default function Hero() {
                         transition={{ delay: 0.7 }}
                         className="flex flex-wrap gap-4"
                     >
-                        <button className="btn btn-primary">View Products</button>
-                        <button className="btn btn-neutral">Book a Product</button>
+                        <Link to='/all-products' className="btn btn-primary">View Products</Link>
+                        <Link to='/all-products' className="btn btn-neutral">Book a Product</Link>
                     </motion.div>
                 </motion.div>
             </div>

@@ -59,7 +59,7 @@ export default function MyProfile() {
                     <img
                         src={profile.photoURL || "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"}
                         alt="Profile"
-                        className="max-w-sm rounded-lg shadow-2xl mx-auto"
+                        className="w-full max-w-sm rounded-lg shadow-2xl mx-auto"
                     />
                 </div>
                 <div className="w-full bg-base-100">
