@@ -21,6 +21,8 @@ const ProductDetails = lazy(() => import('../pages/products/ProductDetails'));
 const Booking = lazy(() => import('../pages/products/Booking'));
 const MyOrders = lazy(() => import('../pages/dashboard/buyer/MyOrders'));
 const MyProfile = lazy(() => import('../pages/dashboard/MyProfile'));
+const About = lazy(() => import('../pages/About'));
+const Contact = lazy(() => import('../pages/Contact'));
 
 export const router = createBrowserRouter([
     {
@@ -40,6 +42,8 @@ export const router = createBrowserRouter([
             { path: '/all-products', element: <AllProducts /> },
             { path: '/all-products/:id', element: <PrivateRoute> <ProductDetails /> </PrivateRoute> },
             { path: '/booking/:id', element: <BuyerRoutes> <Booking /> </BuyerRoutes>},
+            { path: '/about', element: <About /> },
+            { path: '/contact', element: <Contact /> },
             { path: '*', element: <NoPage /> }
         ]
     },

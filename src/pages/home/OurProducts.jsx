@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 export default function OurProducts() {
     const axios = useAxios();
     // data fetch using tanstack query
-    const { data: products = [] } = useQuery({
+    const { data: products = [], isLoading } = useQuery({
         queryKey: ['products', 'featured-products'],
         queryFn: async () => {
             const response = await axios.get('/api/products?featured=true&limit=6');
@@ -31,9 +31,9 @@ export default function OurProducts() {
                     production teams from order to delivery.
                 </p>
             </motion.div>
-            <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+            <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 min-h-[400px]">
                 {
-                    products.map(product => <Card key={product._id} product={product} />)
+                    isLoading ? <span className="loading loading-spinner loading-lg col-span-full mx-auto mt-10"></span> : products.length > 0 ? products.map(product => <Card key={product._id} product={product} />) : <p className="col-span-full mx-auto mt-10 text-xl md:text-2xl text-red-500">Opps! Products is not available right now</p>
                 }
             </section>
         </section>
