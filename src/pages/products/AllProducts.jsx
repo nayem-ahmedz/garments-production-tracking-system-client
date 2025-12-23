@@ -1,14 +1,19 @@
+import { useState } from "react";
 import CardFull from "../../components/products/CardFull";
 import useAxios from "../../hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 
 export default function AllProducts() {
     const axios = useAxios();
+    const limit = 6;
+    const [totalPages, setTotalPages] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0);
     // data fetch using tanstack query
     const { data: products = [], isLoading } = useQuery({
-        queryKey: ['products', 'all-products'],
+        queryKey: ['products', currentPage],
         queryFn: async () => {
-            const response = await axios.get('/api/products');
+            const response = await axios.get(`/api/products?limit=${limit}&skip=${currentPage * limit}`);
+            setTotalPages(Math.ceil(response.data.total/limit));
             return response.data.products;
         }
     });
@@ -28,6 +33,15 @@ export default function AllProducts() {
                     isLoading ? <span className="loading loading-spinner loading-lg col-span-full mx-auto mt-10"></span> : products.length > 0 ? products.map(product => <CardFull key={product._id} product={product} />) : <p className="col-span-full mx-auto mt-10 text-xl md:text-2xl text-red-500">Opps! Products is not available right now</p>
                 }
             </section>
+            <div className="flex justify-center mt-6 md:mt-10">
+                <button className="btn" onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 0}>Prev</button>
+                <div className="join">
+                    {
+                        [...Array(totalPages).keys()].map(el => <button key={el} onClick={() => setCurrentPage(el)} className={`join-item btn ${currentPage === el && 'btn-primary'}`}> {el + 1} </button>)
+                    }
+                </div>
+                <button className="btn" onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages - 1}>Next</button>
+            </div>
         </section>
     );
 }
