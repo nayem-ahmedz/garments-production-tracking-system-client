@@ -12,6 +12,10 @@ export default function ManageUsers() {
     const [roleFilter, setRoleFilter] = useState(""); // empty = all roles
     const modalRef = useRef(null);
     const axiosSecure = useAxiosSecure();
+    // state for suspend modal
+    const [showSuspendModal, setShowSuspendModal] = useState(false);
+    const [suspendReason, setSuspendReason] = useState("");
+    const [suspendFeedback, setSuspendFeedback] = useState("");
 
     // data fetch using tanstack query
     const { data: users = [], refetch } = useQuery({
@@ -78,10 +82,44 @@ export default function ManageUsers() {
             return matchesSearch && matchesRole;
         });
     }, [users, searchTerm, roleFilter]);
+    // handle suspend
+    const handleSuspend = (user) => {
+        closeModal(); // close main modal
+        setSelectedUser(user);
+        setSuspendReason("");
+        setSuspendFeedback("");
+        setShowSuspendModal(true);
+    };
+    const submitSuspend = (e) => {
+        e.preventDefault();
+        if (!suspendReason || !suspendFeedback) {
+            toast.error("Please fill all fields", { duration: 2000 });
+            return;
+        }
+        axiosSecure.patch(`/api/admin/users/${selectedUser._id}`, {
+            status: "suspended",
+            suspendReason,
+            suspendFeedback
+        })
+            .then(() => {
+                refetch();
+                setShowSuspendModal(false);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User suspended successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .catch(err => console.error(err));
+    };
+
+
     return (
         <section className="p-4">
             <title>Manage Users | Dashboard</title>
-            <h2 className="text-2x md:text-3xl mb-2">Manage Users : {filteredUsers.length}</h2>
+            <h2 className="text-2xl md:text-3xl mb-2">Manage Users : {filteredUsers.length}</h2>
             {/* Search & Filter */}
             <div className="flex gap-4 mb-4 justify-end">
                 <input
@@ -157,6 +195,13 @@ export default function ManageUsers() {
                             <div className="mt-2 flex gap-3">
                                 <button type="submit" className="btn btn-primary btn-outline">Approve</button>
                                 <button type="button" className="btn btn-secondary btn-outline" onClick={handleReject}>Reject</button>
+                                <button
+                                    type="button"
+                                    className="btn btn-warning btn-outline"
+                                    onClick={() => handleSuspend(selectedUser)}
+                                    disabled={selectedUser.status === "suspended"} >
+                                    Suspend
+                                </button>
                             </div>
                         </form>
                     }
@@ -167,6 +212,38 @@ export default function ManageUsers() {
                     </div>
                 </div>
             </dialog>
+            {/* suspend modal */}
+            {showSuspendModal && selectedUser && (
+                <dialog className="modal modal-bottom sm:modal-middle" open>
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg mb-4">Suspend {selectedUser.name}</h3>
+                        <form onSubmit={submitSuspend}>
+                            <label className="label">Reason</label>
+                            <input
+                                type="text"
+                                placeholder="Reason for suspension"
+                                className="input input-bordered w-full mb-3"
+                                value={suspendReason}
+                                onChange={(e) => setSuspendReason(e.target.value)}
+                                required
+                            />
+                            <label className="label">Feedback</label>
+                            <textarea
+                                placeholder="Feedback for user"
+                                className="textarea textarea-bordered w-full mb-3"
+                                value={suspendFeedback}
+                                onChange={(e) => setSuspendFeedback(e.target.value)}
+                                required
+                            ></textarea>
+                            <div className="modal-action flex justify-end gap-2">
+                                <button type="submit" className="btn btn-warning">Suspend</button>
+                                <button type="button" className="btn" onClick={() => setShowSuspendModal(false)}>Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </dialog>
+            )}
+
         </section>
     );
 }

@@ -70,6 +70,13 @@ export default function MyProfile() {
                         <p><strong>Status:</strong> {profile.status}</p>
                         <p><strong>Account Created:</strong> {new Date(profile.createdAt).toLocaleString()}</p>
                         <p><strong>Last Updated:</strong> {new Date(profile.updatedAt).toLocaleString()}</p>
+                        {/* Show suspend info only if user is suspended */}
+                        {profile.status === 'suspended' && (
+                            <div className="mt-4 p-4 bg-red-100 rounded-lg">
+                                <p><strong>Suspend Reason:</strong> {profile.suspendReason}</p>
+                                <p><strong>Feedback:</strong> {profile.suspendFeedback}</p>
+                            </div>
+                        )}
                     </div>
                     <div className="flex justify-center">
                         <button className="btn btn-error mt-6" onClick={handleLogout}>logout</button>
