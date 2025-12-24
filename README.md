@@ -3,7 +3,7 @@
 A modern, responsive, and role-based production management system built with **React Js**. This platform allows buyers to place garment orders, managers to manage products & approvals, and admins to control the entire system with analytics.
 
 ## 🔗 Live Website
-👉 [Frontend Live site](https://bite-sharee.vercel.app/)
+👉 [Frontend Live site](https://garments-production-tracking-system.vercel.app/)
 
 ## Project Preview
 ![Home](./public/media/smart-garments-homepage.webp)
