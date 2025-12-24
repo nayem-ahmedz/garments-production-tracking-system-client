@@ -36,6 +36,7 @@ const TrackOrders = lazy(() => import('../pages/dashboard/buyer/TrackOrders'));
 const MyProfile = lazy(() => import('../pages/dashboard/MyProfile'));
 const About = lazy(() => import('../pages/About'));
 const Contact = lazy(() => import('../pages/Contact'));
+const Orders = lazy(() => import('../pages/dashboard/Orders'));
 
 export const router = createBrowserRouter([
     {
@@ -70,6 +71,7 @@ export const router = createBrowserRouter([
             { path: 'all-products', element: <AdminRoute> <AdminAllProducts /> </AdminRoute> },
             { path: 'all-products/update/:id', element: <AdminRoute> <UpdateProduct /> </AdminRoute> },
             { path: 'all-orders', element: <AdminRoute> <AllOrders /> </AdminRoute> },
+            { path: 'all-orders/:id', element: <AdminRoute> <Orders /> </AdminRoute> },
             { path: 'add-product', element: <ManagerRoute> <AddProduct /> </ManagerRoute> },
             { path: 'manage-products', element: <ManagerRoute> <ManageProducts /> </ManagerRoute> },
             { path: 'manage-products/update/:id', element: <ManagerRoute> <ManagerUpdateProduct /> </ManagerRoute> },
