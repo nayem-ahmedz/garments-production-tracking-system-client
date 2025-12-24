@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import UserCard from "./UserCard";
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { MdClose } from "react-icons/md";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
@@ -8,16 +8,16 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 export default function ManageUsers() {
     const [selectedUser, setSelectedUser] = useState(null);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [roleFilter, setRoleFilter] = useState(""); // empty = all roles
     const modalRef = useRef(null);
     const axiosSecure = useAxiosSecure();
-    const [message, setMessage] = useState('');
 
     // data fetch using tanstack query
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const response = await axiosSecure.get('/api/admin/users');
-            console.log('run once')
             return response.data.users;
         }
     });
@@ -36,8 +36,8 @@ export default function ManageUsers() {
     const handleRoleUpdate = (e) => {
         e.preventDefault();
         const selectedRole = e.target.role.value;
-        if(selectedUser.status === 'active' && selectedUser.role === selectedRole){
-            toast.error('no changes is made', { duration: 2000, style: {padding: ' 10px 20px'}});
+        if (selectedUser.status === 'active' && selectedUser.role === selectedRole) {
+            toast.error('no changes is made', { duration: 2000, style: { padding: ' 10px 20px' } });
             return;
         }
         console.log('approve', selectedRole);
@@ -45,8 +45,8 @@ export default function ManageUsers() {
     }
 
     const handleReject = () => {
-        if(selectedUser.status === 'rejected'){
-            toast.error('no changes is made', { duration: 2000, style: {padding: ' 10px 20px'}});
+        if (selectedUser.status === 'rejected') {
+            toast.error('no changes is made', { duration: 2000, style: { padding: ' 10px 20px' } });
             return;
         }
         takeAction({ status: 'rejected' });
@@ -65,15 +65,43 @@ export default function ManageUsers() {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                console.log(response.data)
             })
             .catch(error => console.log(error));
     }
-    console.log(users);
+    // Filtered users based on search and role
+    const filteredUsers = useMemo(() => {
+        return users.filter(user => {
+            const matchesSearch =
+                user.name.toLowerCase().includes(searchTerm.trim().toLowerCase()) ||
+                user.email.toLowerCase().includes(searchTerm.trim().toLowerCase());
+            const matchesRole = roleFilter ? user.role === roleFilter : true;
+            return matchesSearch && matchesRole;
+        });
+    }, [users, searchTerm, roleFilter]);
     return (
         <section className="p-4">
             <title>Manage Users | Dashboard</title>
-            <h2>Manage Users : {users.length}</h2>
+            <h2 className="text-2x md:text-3xl mb-2">Manage Users : {filteredUsers.length}</h2>
+            {/* Search & Filter */}
+            <div className="flex gap-4 mb-4 justify-end">
+                <input
+                    type="text"
+                    placeholder="Search by name or email"
+                    className="input input-bordered w-full max-w-xs"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <select
+                    className="select select-bordered max-w-xs"
+                    value={roleFilter}
+                    onChange={(e) => setRoleFilter(e.target.value)}
+                >
+                    <option value="">All Roles</option>
+                    <option value="buyer">Buyer</option>
+                    <option value="manager">Manager</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
             <section className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
                 <table className="table">
                     {/* head */}
@@ -89,7 +117,7 @@ export default function ManageUsers() {
                     </thead>
                     <tbody>
                         {
-                            users.map((user, index) => <UserCard user={user} key={user._id} serial={index} showModal={showModal} />)
+                            filteredUsers.map((user, index) => <UserCard user={user} key={user._id} serial={index} showModal={showModal} />)
                         }
                     </tbody>
                 </table>

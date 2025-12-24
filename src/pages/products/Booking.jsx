@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import Loading from "../../components/utils/Loading";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useAuth from "../../hooks/useAuth";
 
 export default function Booking() {
@@ -14,6 +14,7 @@ export default function Booking() {
     const [ ordering, setOrdering ] = useState(false);
     const productParam = useParams();
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
+    const navigate = useNavigate();
     useEffect(() => {
         axiosSecure.get(`/api/products/${productParam.id}`)
             .then(res => {
@@ -32,7 +33,7 @@ export default function Booking() {
         axiosSecure.post('/api/orders', data)
           .then(res => {
             setOrdering(false);
-            console.log(res.data);
+            navigate('/dashboard/my-orders');
           })
           .catch(err => console.log(err));
     }
