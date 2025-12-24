@@ -1,10 +1,10 @@
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import UserCard from "./UserCard";
 import { useRef, useState } from "react";
 import { MdClose } from "react-icons/md";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 export default function ManageUsers() {
     const [selectedUser, setSelectedUser] = useState(null);

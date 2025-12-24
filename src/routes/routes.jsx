@@ -7,16 +7,28 @@ import AdminRoute from "./AdminRoutes";
 import ManagerRoute from "./ManagerRoutes";
 import BuyerRoutes from "./BuyerRoutes";
 const Home = lazy(() => import('../pages/home/Home'));
-const Dashboard = lazy(() => import('../layout/dashboard/Dashboard'));
 const NoPage = lazy(() => import('../pages/NoPage'));
 const Login = lazy(() => import('../pages/auth/Login'));
 const Register = lazy(() => import('../pages/auth/Register'));
+// dashboard
+const Dashboard = lazy(() => import('../layout/dashboard/Dashboard'));
 const DashboardHome = lazy(() => import('../pages/dashboard/DashboardHome'));
-const ManageUsers = lazy(() => import('../pages/admin/users/ManageUsers'));
-const AllProducts = lazy(() => import('../pages/products/AllProducts'));
+
+// admin pages
+const ManageUsers = lazy(() => import('../pages/dashboard/admin/ManageUsers'));
+const AdminAllProducts = lazy(() => import('../pages/dashboard/admin/AllProducts'));
+const UpdateProduct = lazy(() => import('../pages/dashboard/admin/UpdateProduct'));
+const AllOrders = lazy(() => import('../pages/dashboard/admin/AllOrders'));
+
+// manager pages
 const AddProduct = lazy(() => import('../pages/dashboard/managers/AddProduct'));
 const ManageProducts = lazy(() => import('../pages/dashboard/managers/ManageProducts'));
-const AdminAllProducts = lazy(() => import('../pages/admin/products/AllProducts'));
+const ManagerUpdateProduct = lazy(() => import('../pages/dashboard/managers/UpdateProduct'));
+const ApprovedOrders = lazy(() => import('../pages/dashboard/managers/ApprovedOrders'));
+const PendingOrders = lazy(() => import('../pages/dashboard/managers/PendingOrders'));
+
+// buyer / customer pages
+const AllProducts = lazy(() => import('../pages/products/AllProducts'));
 const ProductDetails = lazy(() => import('../pages/products/ProductDetails'));
 const Booking = lazy(() => import('../pages/products/Booking'));
 const MyOrders = lazy(() => import('../pages/dashboard/buyer/MyOrders'));
@@ -54,9 +66,14 @@ export const router = createBrowserRouter([
             { index: true, element: <DashboardHome /> },
             { path: 'home', element: <DashboardHome /> },
             { path: 'manage-users', element: <AdminRoute><ManageUsers /></AdminRoute> },
+            { path: 'all-products', element: <AdminRoute> <AdminAllProducts /> </AdminRoute> },
+            { path: 'all-products/update/:id', element: <AdminRoute> <UpdateProduct /> </AdminRoute> },
+            { path: 'all-orders', element: <AdminRoute> <AllOrders /> </AdminRoute> },
             { path: 'add-product', element: <ManagerRoute> <AddProduct /> </ManagerRoute> },
             { path: 'manage-products', element: <ManagerRoute> <ManageProducts /> </ManagerRoute> },
-            { path: 'all-products', element: <AdminRoute> <AdminAllProducts /> </AdminRoute> },
+            { path: 'manage-products/update/:id', element: <ManagerRoute> <ManagerUpdateProduct /> </ManagerRoute> },
+            { path: 'approved-orders', element: <ManagerRoute> <ApprovedOrders /> </ManagerRoute> },
+            { path: 'pending-orders', element: <ManagerRoute> <PendingOrders /> </ManagerRoute> },
             { path: 'my-orders', element: <BuyerRoutes> <MyOrders /> </BuyerRoutes> },
             { path: 'my-profile', element: <MyProfile />},
             { path: '*', element: <NoPage /> }

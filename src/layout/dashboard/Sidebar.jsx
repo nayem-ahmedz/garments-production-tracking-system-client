@@ -20,7 +20,7 @@ export default function Sidebar({role}) {
         { id: 4, text: 'Add Product', link: '/dashboard/add-product', icon: RiFolderAddFill },
         { id: 5, text: 'Manage Products', link: '/dashboard/manage-products', icon: GiClothes },
         { id: 6, text: 'Pending Orders', link: '/dashboard/pending-orders', icon: BsSendExclamationFill },
-        { id: 7, text: 'Approve Orders', link: '/dashboard/approve-orders', icon: BsSendCheckFill },
+        { id: 7, text: 'Approve Orders', link: '/dashboard/approved-orders', icon: BsSendCheckFill },
         { id: 8, text: 'Manage Users', link: '/dashboard/manage-users', icon: FaUsers },
         { id: 9, text: 'All Products', link: '/dashboard/all-products', icon: GiClothes },
         { id: 10, text: 'All Orders', link: '/dashboard/all-orders', icon: AiFillProduct },
