@@ -1,5 +1,5 @@
 export default function BuyerDashboard(){
     return(
-        <h2>Buyer Dashboard</h2>
+        <h2>Welcome to Buyer Dashboard</h2>
     );
 }

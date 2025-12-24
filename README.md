@@ -77,9 +77,8 @@ This project is designed to help small and medium-sized garment factories:
 - Firebase JWT Authentication
 - Framer Motion
 - swiper
-<!-- - Axios
 - Recharts
- -->
+
 
 ---
 

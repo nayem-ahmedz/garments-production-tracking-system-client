@@ -32,6 +32,7 @@ const AllProducts = lazy(() => import('../pages/products/AllProducts'));
 const ProductDetails = lazy(() => import('../pages/products/ProductDetails'));
 const Booking = lazy(() => import('../pages/products/Booking'));
 const MyOrders = lazy(() => import('../pages/dashboard/buyer/MyOrders'));
+const TrackOrders = lazy(() => import('../pages/dashboard/buyer/TrackOrders'));
 const MyProfile = lazy(() => import('../pages/dashboard/MyProfile'));
 const About = lazy(() => import('../pages/About'));
 const Contact = lazy(() => import('../pages/Contact'));
@@ -75,6 +76,7 @@ export const router = createBrowserRouter([
             { path: 'approved-orders', element: <ManagerRoute> <ApprovedOrders /> </ManagerRoute> },
             { path: 'pending-orders', element: <ManagerRoute> <PendingOrders /> </ManagerRoute> },
             { path: 'my-orders', element: <BuyerRoutes> <MyOrders /> </BuyerRoutes> },
+            { path: 'track-orders', element: <BuyerRoutes> <TrackOrders /> </BuyerRoutes> },
             { path: 'my-profile', element: <MyProfile />},
             { path: '*', element: <NoPage /> }
         ]
