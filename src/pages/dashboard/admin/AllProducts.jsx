@@ -15,7 +15,7 @@ export default function AllProducts() {
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products', currentUser.email],
         queryFn: async () => {
-            const response = await axiosSecure.get('/api/admin/products?limit=12');
+            const response = await axiosSecure.get('/api/admin/products');
             return response.data.products;
         }
     });
