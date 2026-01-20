@@ -12,7 +12,7 @@ export default function Card({product}) {
                     {name}
                     <div className="badge badge-secondary">$ {price}</div>
                 </h2>
-                <p className="text-base">{description.slice(0,130)}...</p>
+                <p className="text-base">{description.length > 70 ? `${description.slice(0,70)}...` : description}</p>
                 <div className="card-actions justify-between mt-2">
                     <Link to={`/all-products/${product._id}`} className="btn btn-primary btn-outline">View Details</Link>
                 </div>

@@ -1,16 +1,17 @@
 import { Link, NavLink } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import ThemeToggler from "../../components/utils/ThemeToggler";
 
 export default function Header() {
     const { currentUser, loading, logoutUser } = useAuth();
     const navLinks = <>
         <li> <NavLink className='text-base' to='/'>Home</NavLink> </li>
         <li> <NavLink className='text-base' to='/all-products'>All Products</NavLink> </li>
+        <li> <NavLink className='text-base' to='/about'>About us</NavLink> </li>
+        <li> <NavLink className='text-base' to='/contact'>Contact</NavLink> </li>
         {
             !currentUser ? <>
-                <li> <NavLink className='text-base' to='/about'>About us</NavLink> </li>
-                <li> <NavLink className='text-base' to='/contact'>Contact</NavLink> </li>
                 <li> <NavLink className='text-base' to='/auth/register'>Register</NavLink> </li>
             </> : <li> <NavLink className='text-base' to='/dashboard'>Dashboard</NavLink> </li>
         }
@@ -73,14 +74,27 @@ export default function Header() {
                     {
                         loading ? <span className="loading loading-dots loading-xl mr-5"></span> : currentUser ?
                             <>
-                                <div className="avatar">
-                                    <div className="w-10 rounded-full">
-                                        <img src={currentUser.photoURL} alt={`image of ${currentUser.displayName}`} />
+                                <div className="dropdown dropdown-end">
+                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                        <div className="w-10 rounded-full">
+                                            <img src={currentUser.photoURL} alt={`image of ${currentUser.displayName}`} />
+                                        </div>
                                     </div>
+                                    <ul
+                                        tabIndex="-1"
+                                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                        <li>
+                                            <a className="justify-between text-base">Profile</a>
+                                        </li>
+                                        <li> <Link to='/dashboard' className="text-base">Dashboard</Link> </li>
+                                        <li>
+                                            <button className='text-base' onClick={handleLogout}>Logout</button>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <button className='btn btn-error btn-outline hover:text-white' onClick={handleLogout}>Logout</button>
                             </> : <Link to='/auth/login' className="btn btn-primary text-base">Login</Link>
                     }
+                    <ThemeToggler />
                 </div>
             </nav>
         </header>
