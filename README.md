@@ -3,13 +3,13 @@
 A modern, responsive, and role-based production management system built with **React Js**. This platform allows buyers to place garment orders, managers to manage products & approvals, and admins to control the entire system with analytics.
 
 ## 🔗 Live Website
-👉 [Frontend Live site](https://garments-production-tracking-system.vercel.app/)
+[Frontend Live site](https://garments-production-tracking-system.vercel.app/)
 
 ## Project Preview
 ![Home](./public/media/smart-garments-homepage.webp)
 <!-- ![Dashboard](./screenshots/dashboard.png) -->
 
-## 🎯 Project Purpose
+## Project Purpose
 This project is designed to help small and medium-sized garment factories:
 - Track buyer orders
 - Manage production workflow
@@ -17,14 +17,14 @@ This project is designed to help small and medium-sized garment factories:
 - Control users and product visibility
 - Visualize business data through analytics
 
-## 👥 User Roles
+## User Roles
 - **Admin** – Full system control
 - **Manager** – Product & Order Management
 - **Buyer** – Order placement & tracking
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
 ### Public Features
 - Modern animated Home Page (Framer Motion)
@@ -58,7 +58,7 @@ This project is designed to help small and medium-sized garment factories:
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - React + Vite
 - Tailwind CSS + Daisy UI
@@ -82,22 +82,21 @@ This project is designed to help small and medium-sized garment factories:
 
 ---
 
-## 🔐 Authentication
+## Authentication
 - Firebase Email/Password Login
 - Google Login
 - Role-based Protected Routes
-<!-- - JWT Token Stored in HTTP-Only Cookies -->
 
 ---
 
-## 📅 Project Timeline
+## Project Timeline
 - Started: 8 Dec 2025
 - Completed: 23 Dec 2025
-- Last updated: 24 Dec 2025
+- Last updated: 20 Jan 2026
 
 ---
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
 1. Clone the repository:
    ```bash
@@ -118,7 +117,7 @@ This project is designed to help small and medium-sized garment factories:
 
 ---
 
-## 🔑 Environment Variables
+## Environment Variables
 Create `.env.local` file and add environment variables
 
 ```env
@@ -134,14 +133,7 @@ VITE_IMGBB_API_KEY=your_imagebb_api_key
 
 ---
 
-## ✅ Deployment Checklist
-- Firebase domain added
-- React Router reload issue fixed
-- All private routes protected
-
----
-
-## 👨‍💻 Developer Info
+## Developer Info
 
 Name: Nayem Ahmed  
 Role: Fullstack Web Developer (MERN Stack)  

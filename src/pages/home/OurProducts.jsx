@@ -9,7 +9,7 @@ export default function OurProducts() {
     const { data: products = [], isLoading } = useQuery({
         queryKey: ['products', 'featured-products'],
         queryFn: async () => {
-            const response = await axios.get('/api/products?featured=true&limit=6');
+            const response = await axios.get('/api/products?featured=true&limit=8');
             return response.data.products;
         }
     });

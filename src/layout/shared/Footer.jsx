@@ -19,15 +19,15 @@ export default function Footer() {
                 </aside>
                 <nav>
                     <h6 className="footer-title mb-0 md:mb-2">Quick Links</h6>
-                    <Link href='/' className="link link-hover">Home</Link>
-                    <Link href='/all-products' className="link link-hover">All Products</Link>
-                    <Link href='/about' className="link link-hover">About Us</Link>
-                    <Link href='/contact' className="link link-hover">Contact</Link>
+                    <Link to='/' className="link link-hover">Home</Link>
+                    <Link to='/all-products' className="link link-hover">All Products</Link>
+                    <Link to='/about' className="link link-hover">About Us</Link>
+                    <Link to='/contact' className="link link-hover">Contact</Link>
                 </nav>
                 <nav>
                     <h6 className="footer-title">Navigation</h6>
-                    <Link href='/auth/login' className="link link-hover">Login</Link>
-                    <Link href='/auth/register' className="link link-hover">Register</Link>
+                    <Link to='/auth/login' className="link link-hover">Login</Link>
+                    <Link to='/auth/register' className="link link-hover">Register</Link>
                 </nav>
                 <nav>
                     <h6 className="footer-title mb-0 md:mb-2">Contact</h6>
