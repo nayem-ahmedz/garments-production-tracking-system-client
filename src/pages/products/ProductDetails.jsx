@@ -1,20 +1,15 @@
 import { useEffect, useState } from "react";
-import useAuth from "../../hooks/useAuth";
-import useRole from "../../hooks/useRole";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link, useParams } from "react-router";
 import Loading from "../../components/utils/Loading";
+import useAxios from "../../hooks/useAxios";
 
 export default function ProductDetails() {
-    const { role, isLoading } = useRole();
-    const { currentUser } = useAuth();
-    const axiosSecure = useAxiosSecure();
+    const axios = useAxios();
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
-    const canOrder = currentUser && role === "buyer";
     const productParam = useParams();
     useEffect(() => {
-        axiosSecure.get(`/api/products/${productParam.id}`)
+        axios.get(`/api/products/${productParam.id}`)
             .then(res => {
                 setLoading(false);
                 setProduct(res.data.product);
@@ -44,14 +39,7 @@ export default function ProductDetails() {
                             <p><strong>Payment:</strong> {product.paymentOption}</p>
                         </div>
                         {/* Order Button */}
-                        {canOrder && (
-                            <Link to={`/booking/${product._id}`} className="btn btn-primary mt-6" > Order Now </Link>
-                        )}
-                        {!canOrder && (
-                            <p className="text-xl text-red-500 mt-6">
-                                Admins & Managers cannot place orders
-                            </p>
-                        )}
+                        <Link to={`/booking/${product._id}`} className="btn btn-primary mt-6" > Order Now </Link>
                     </div>
                 </div>
             </div>

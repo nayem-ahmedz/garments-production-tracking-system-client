@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function AllProducts() {
     const axios = useAxios();
-    const limit = 6;
+    const limit = 8;
     const [totalPages, setTotalPages] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
     // data fetch using tanstack query
@@ -28,7 +28,7 @@ export default function AllProducts() {
                     All availables products, browse, order and get delivered within weeks
                 </p>
             </div>
-            <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 min-h-[400px]">
+            <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 min-h-[400px]">
                 {
                     isLoading ? <span className="loading loading-spinner loading-lg col-span-full mx-auto mt-10"></span> : products.length > 0 ? products.map(product => <CardFull key={product._id} product={product} />) : <p className="col-span-full mx-auto mt-10 text-xl md:text-2xl text-red-500">Opps! Products is not available right now</p>
                 }
